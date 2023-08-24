@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+      form{
+          padding:5% ;
+          border: 2px solid rgb(0, 0, 0,0.2);
+          border-radius: 6px;
+          margin: 5%;
+          margin-top: 0.5%;        
+      }
+
+      .ch{
+          margin-top: 8%;
+          text-align: center;
+      }
+
+@media screen and (min-width: 1080px) {
+ form{
+  margin-left: 25%;
+  margin-right: 25%;
+ }
+ .ch{
+          margin-top: 2%;
+          
+      }
+}
+.call-link{
+  padding: 2rem;
+  background-color: aqua;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 1rem;
+}
+
+  </style>
+
+  </head>
+  <body>
+    <h1><a href="tel:9487075356" class="call-link">Call Now</a></h1>
+    <h1 class="ch">Contact US!</h1>
+    <form id="form">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" id="from_name" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email_id" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Mobile Number</label>
+        <input type="tel" class="form-control" id="phn" placeholder="Mobile Number">
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="4"></textarea>
+      </div>
+   
+      <button onclick="sendEmail()" class="btn btn-primary mb-3">Sent!</button>
+    </form>
+
+    
+    
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+
+      <script type="text/javascript">
+(function(){
+           emailjs.init("4quVbHlIhDbuU6jlW"); 
+        })();
+        alert("Contact US!")
+     
+        function sendEmail(){
+           var templateParams = {
+              from_name: document.getElementById("from_name").value,
+              email_id: document.getElementById("email_id").value,
+              message: document.getElementById("message").value,
+              phn: document.getElementById("phn").value
+           };
+     
+          
+           emailjs.send("service_cexkf5r", "template_v4g8h9h", templateParams)
+              .then(function(response) {
+                 console.log("Email sent successfully:", response);
+              })
+              .catch(function(error) {
+                    console.log("Error sending email:", error);
+                });
+        }
+     </script>
+    
+   
+
+  </body>
+</html>
